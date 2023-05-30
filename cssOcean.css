@@ -103,51 +103,25 @@ button{
     display: none;
 }
 
-.grid {
-	width: 600px;
-    height: 150px;
-	/* height: 620px; */
-	/* border: solid black 1px; */
-	display: flex;
-    justify-content: space-between;
-	flex-wrap: wrap;
-    position: absolute;
-    z-index: 1;
-    left: 20px;
-}
-
-.grid div {
-	width: 70px;
-	height: 80px;
-    /* border: solid 2px white; */
-    margin: 0px 0px;
-    padding:0;
-	/* background-color: purple; */
-
+.canMove1 {
+    background-image: url('can_1.png');
     background-repeat: no-repeat;
     background-size: cover;
-
-
-}
-
-.pollutant {
-    background-image: url('can_1.png');
-    border: solid 2px rgb(127, 133, 137);
     background-position: center;
-
-	/* background-color: purple; */
-	border-radius: 5px;
-}
-
-.pollutant2{
-    background-image: url('plastic_1.png');
+    height: 80px;
+    width: 70px;
+    /* left: 40px; */
+    position: absolute;
+    z-index: 1;
+    margin-left: 20px;
+    /* left: 20px; */
     border: solid 2px rgb(127, 133, 137);
-    background-position: center;
-
-	/* background-color: purple; */
-	border-radius: 5px;
+    border-radius: 5px;
 }
 
+.canMove2{
+    left: 90;
+}
 .skySpace{
     /* background-image: url('skyBackground_4_1.jpg'); */
     background-image: url('skyBackground_7.jpg');
@@ -159,8 +133,39 @@ button{
     width: 600px;
     /* background-color: rgb(191, 155, 225); */
     position: absolute;
-    /* z-index: 0; */
+    z-index: 0;
 }
+
+.pollutedSky{
+    display: none;
+    background-image: url('skyBackground_4_1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0px 20px 0px 20px;
+    height: 650px;
+    width: 600px;
+    /* background-color: rgb(191, 155, 225); */
+    position: absolute;
+    z-index: 0;
+
+}
+.badWater{
+    /* visibility: hidden; */
+    display: none;
+/* background-color: red; */
+    background-image: url('bad_water.png');
+    z-index: 4;
+    position: absolute;
+    top: 574px;
+    left: 20px;
+    height: 200px;
+    /* background-image: url('bad_water4_1.png'); */
+
+    background-repeat: repeat-x;
+    animation: slideright 80s infinite linear;
+    -webkit-animation: slideright 80s infinite linear;
+    width: 600px;
+  }
 
 .oceanWater {
     position: absolute;
@@ -174,8 +179,10 @@ button{
     animation: slideright 80s infinite linear;
     -webkit-animation: slideright 80s infinite linear;
     width: 600px;
-    z-index: +1;
+    z-index: 2;
   }
+
+  
 
 .guradFish{
     background-image: url('fish_1.png');
@@ -213,6 +220,49 @@ button{
 }
 
 
+
+/* .grid {
+	width: 600px;
+    height: 150px;
+	/* height: 620px; */
+	/* border: solid black 1px; */
+	/* display: flex;
+    justify-content: space-between;
+	flex-wrap: wrap;
+    position: absolute;
+    z-index: 1;
+    left: 20px;
+}
+
+.grid div {
+	width: 70px;
+	height: 80px;
+    /* border: solid 2px white; */
+    
+    /* margin: 0px 0px;
+    padding:0;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+}
+
+.pollutant {
+    background-image: url('can_1.png');
+    border: solid 2px rgb(127, 133, 137);
+    background-position: center;
+
+	border-radius: 5px;
+}
+
+.pollutant2{
+    background-image: url('plastic_1.png');
+    border: solid 2px rgb(127, 133, 137);
+    background-position: center;
+
+	border-radius: 5px;
+}  */
+
 /* 
 level-2
 width: 70px;
@@ -235,10 +285,6 @@ height: 100px; */
     display: flex;
     flex-wrap: wrap;
 }
-
-.invader{
-    background-color: blueviolet;
-} */
 
 /* .impureParticle{
     background-image: url('can_1.png');
@@ -267,7 +313,7 @@ height: 100px; */
 }
 
 .plasticMove{
-    background-image: url('can_1.png');
+    background-image: url('plastic_1.png');
     background-repeat: no-repeat;
     background-size: cover;
     height: 100px;
