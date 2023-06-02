@@ -22,7 +22,7 @@
 
 }
 .messageCloud{
-    background-image: url('cloud_2.png');
+    background-image: url("images/cloud_1.png");
     background-repeat: no-repeat;
     background-size:contain;
     height: 400px;
@@ -72,7 +72,7 @@ button{
     position: absolute;
     z-index: 3;
     top: 1vh;
-    right: 2vw;
+    right: 3vw;
     color: green;
     text-align: center;
     background-color: white;
@@ -81,14 +81,9 @@ button{
 }
 
 .bullet{
-    /* display: none; */
     border-radius: 50%;
     position: absolute;
     z-index: 3;
-    /* left: 60px;  */
-    /* top: 12px;
-    left: 60px; */
-    /* padding: 10px; */
     background-color: red;
     height: 6px;
     width: 8px;
@@ -104,7 +99,7 @@ button{
 }
 
 .canMove1 {
-    background-image: url('can_1.png');
+    background-image: url('images/can_1.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -121,10 +116,24 @@ button{
 
 .canMove2{
     left: 90;
+    background-image: url('images/can_1.png');
+    /* background-color: brown; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 80px;
+    width: 70px;
+    /* left: 80px; */
+    position: absolute;
+    z-index: 1;
+    margin-left: 20px;
+    /* left: 20px; */
+    border: solid 2px rgb(127, 133, 137);
+    border-radius: 5px;
 }
 .skySpace{
     /* background-image: url('skyBackground_4_1.jpg'); */
-    background-image: url('skyBackground_7.jpg');
+    background-image: url('images/freshsky.jpg');
 
     background-repeat: no-repeat;
     background-size: cover;
@@ -138,7 +147,7 @@ button{
 
 .pollutedSky{
     display: none;
-    background-image: url('skyBackground_4_1.jpg');
+    background-image: url('images/pollutedsky.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0px 20px 0px 20px;
@@ -153,7 +162,7 @@ button{
     /* visibility: hidden; */
     display: none;
 /* background-color: red; */
-    background-image: url('bad_water.png');
+    background-image: url('images/badwater.png');
     z-index: 4;
     position: absolute;
     top: 574px;
@@ -172,7 +181,7 @@ button{
     top: 574px;
     left: 20px;
     height: 200px;
-    background-image: url('water_3.png');
+    background-image: url('images/freshwater.png');
     /* background-image: url('bad_water4_1.png'); */
 
     background-repeat: repeat-x;
@@ -185,9 +194,8 @@ button{
   
 
 .guradFish{
-    background-image: url('fish_1.png');
+    background-image: url('images/fish_1.png');
     background-repeat: no-repeat;
-
     background-size: cover;
     height: 230px;
     width: 150px;
@@ -221,12 +229,12 @@ button{
 
 
 
-/* .grid {
+.grid {
 	width: 600px;
     height: 150px;
 	/* height: 620px; */
 	/* border: solid black 1px; */
-	/* display: flex;
+	 display: flex;
     justify-content: space-between;
 	flex-wrap: wrap;
     position: absolute;
@@ -237,9 +245,9 @@ button{
 .grid div {
 	width: 70px;
 	height: 80px;
-    /* border: solid 2px white; */
+    border: solid 2px white;
     
-    /* margin: 0px 0px;
+    margin: 0px 0px;
     padding:0;
     background-repeat: no-repeat;
     background-size: cover;
@@ -248,7 +256,7 @@ button{
 }
 
 .pollutant {
-    background-image: url('can_1.png');
+    background-image: url('images/can_1.png');
     border: solid 2px rgb(127, 133, 137);
     background-position: center;
 
@@ -256,24 +264,24 @@ button{
 }
 
 .pollutant2{
-    background-image: url('plastic_1.png');
+    background-image: url('images/plastic_1.png');
     border: solid 2px rgb(127, 133, 137);
     background-position: center;
 
 	border-radius: 5px;
-}  */
+} 
 
-/* 
+
 level-2
 width: 70px;
 height: 80px;
-background-image: url('plastic_1.png'); */
+background-image: url('images/plastic_1.png'); */
 
 
 
 /* 
 level-3
-background-image: url('bottle_2.png');
+background-image: url('images/bottle_1.png');
 width: 70px;
 height: 100px; */
 
@@ -301,7 +309,7 @@ height: 100px; */
 
 /* 
 .bottleMove{
-    background-image: url('bottle_3.png');
+    background-image: url('bottle_2.png');
     background-repeat: no-repeat;
     background-size: contain;
     height: 100px;
@@ -336,3 +344,17 @@ height: 100px; */
     z-index: 10;
     left: 200px;
 } */
+
+/* 
+if(canTop + 80 >= bulletTop && bulletLeft >= canLeft && bulletLeft < canLeft + 70 ){
+
+    // console.log("can",canTop)
+    // console.log("bullet",bulletTop)
+    console.log("over over")
+    
+    gameContainer.removeChild(can)
+    shootcan=true;
+    score++;
+    // gameContainer.removeChild(bullet)
+} 
+if (canTop2 + 80 >= bulletTop &&   bulletLeft >= canLeft2 + 70 && bulletLeft < canLeft2 + 140 ){ */

@@ -1,0 +1,337 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Stylish', sans-serif;
+    /* background-color: aliceblue; */
+}
+
+.gameContainer{
+    margin: 0px 400px;
+    
+    /* display: flex;
+    justify-content: space-between;
+    flex-direction: row; */
+    margin: auto;
+    left: 0px;
+    height: 90vh;
+    width: 640px;
+    position: relative;
+    /* padding: 50px; */
+     /* background-color: rgb(88, 81, 94); */
+
+}
+.messageCloud{
+    background-image: url("cloud_1.png");
+    background-repeat: no-repeat;
+    background-size:contain;
+    height: 400px;
+    width: 800px;
+    position: absolute;
+    z-index: 3;
+    top: 10vh;
+    left: 8vw;
+    color: black;
+    text-align: center;
+    /* background-color: black; */
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.instruction_1, .instruction_2{
+    margin: 98px 0px 0px 50px;
+    width: 360px;
+    font-size: 20px;
+}
+.instruction_2{
+    margin-top: 120px;
+    font-size: 26px;
+}
+button{
+    box-shadow: 0 0 0.2em 0.2em rgb(197, 240, 234);
+
+    font-size: 28px;
+    margin: 14px;
+    /* border: none; */
+    padding: 4px 12px;
+    border-radius: 10px;
+    color: white;
+    background-color: green;
+    border: none;
+}
+
+.instruction_1 ul{
+    list-style: none;
+}
+
+.scoreView{
+    display: none;
+    padding: 2px 4px;
+    font-size: 30px;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 3;
+    top: 1vh;
+    right: 2vw;
+    color: green;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 0 0.1em 0.1em rgb(101, 185, 120);
+
+}
+
+.bullet{
+    /* display: none; */
+    border-radius: 50%;
+    position: absolute;
+    z-index: 3;
+    /* left: 60px;  */
+    /* top: 12px;
+    left: 60px; */
+    /* padding: 10px; */
+    background-color: red;
+    height: 6px;
+    width: 8px;
+}
+
+.greenText{
+    color:green;
+    font-size: 22px;
+    font-weight: 900;
+}
+.hide{
+    display: none;
+}
+
+.canMove1 {
+    background-image: url('can_1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 80px;
+    width: 70px;
+    /* left: 40px; */
+    position: absolute;
+    z-index: 1;
+    margin-left: 20px;
+    /* left: 20px; */
+    border: solid 2px rgb(127, 133, 137);
+    border-radius: 5px;
+}
+
+.canMove2{
+    left: 90;
+}
+.skySpace{
+    /* background-image: url('skyBackground_4_1.jpg'); */
+    background-image: url('images/freshsky.jpg');
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0px 20px 0px 20px;
+    height: 650px;
+    width: 600px;
+    /* background-color: rgb(191, 155, 225); */
+    position: absolute;
+    z-index: 0;
+}
+
+.pollutedSky{
+    display: none;
+    background-image: url('pollutedsky.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0px 20px 0px 20px;
+    height: 650px;
+    width: 600px;
+    /* background-color: rgb(191, 155, 225); */
+    position: absolute;
+    z-index: 0;
+
+}
+.badWater{
+    /* visibility: hidden; */
+    display: none;
+/* background-color: red; */
+    background-image: url('badwater.png');
+    z-index: 4;
+    position: absolute;
+    top: 574px;
+    left: 20px;
+    height: 200px;
+    /* background-image: url('bad_water4_1.png'); */
+
+    background-repeat: repeat-x;
+    animation: slideright 80s infinite linear;
+    -webkit-animation: slideright 80s infinite linear;
+    width: 600px;
+  }
+
+.oceanWater {
+    position: absolute;
+    top: 574px;
+    left: 20px;
+    height: 200px;
+    background-image: url('freshwater.png');
+    /* background-image: url('bad_water4_1.png'); */
+
+    background-repeat: repeat-x;
+    animation: slideright 80s infinite linear;
+    -webkit-animation: slideright 80s infinite linear;
+    width: 600px;
+    z-index: 2;
+  }
+
+  
+
+.guradFish{
+    background-image: url('fish_1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 230px;
+    width: 150px;
+    position: absolute;
+    top: 416px;
+    left: 0px;
+    z-index: 2;
+    /* background-color: black; */
+    /* top: 280px;
+    left: 30px; */
+
+}
+
+@keyframes slideright {
+    from {
+        background-position: 1000%;
+    }
+    to {
+        background-position: 0%;
+    }
+  }
+
+  @-webkit-keyframes slideright {
+    from {
+        background-position: 1000%;
+    }
+    to {
+        background-position: 0%;
+    }
+}
+
+
+
+/* .grid {
+	width: 600px;
+    height: 150px;
+	/* height: 620px; */
+	/* border: solid black 1px; */
+	/* display: flex;
+    justify-content: space-between;
+	flex-wrap: wrap;
+    position: absolute;
+    z-index: 1;
+    left: 20px;
+}
+
+.grid div {
+	width: 70px;
+	height: 80px;
+    /* border: solid 2px white; */
+    
+    /* margin: 0px 0px;
+    padding:0;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+}
+
+.pollutant {
+    background-image: url('images/can_1.png');
+    border: solid 2px rgb(127, 133, 137);
+    background-position: center;
+
+	border-radius: 5px;
+}
+
+.pollutant2{
+    background-image: url('images/plastic_1.png');
+    border: solid 2px rgb(127, 133, 137);
+    background-position: center;
+
+	border-radius: 5px;
+}  */
+
+/* 
+level-2
+width: 70px;
+height: 80px;
+background-image: url('images/plastic_1.png'); */
+
+
+
+/* 
+level-3
+background-image: url('images/bottle_1.png');
+width: 70px;
+height: 100px; */
+
+
+
+/* .square{
+    height: 100px;
+    width: 100px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* .impureParticle{
+    background-image: url('can_1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100px;
+    width: 100px;
+    position: relative;
+    z-index: 10;
+    left: 100px;
+    margin:0;
+    padding:0;
+} */
+
+/* 
+.bottleMove{
+    background-image: url('bottle_2.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    z-index: 10;
+    margin:0;
+    padding:0;
+}
+
+.plasticMove{
+    background-image: url('plastic_1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    z-index: 10;
+    left: 100px;
+    margin:0;
+    padding:0;
+
+}
+
+.canMove{
+    background-image: url('plastic_1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    z-index: 10;
+    left: 200px;
+} */
