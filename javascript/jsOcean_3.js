@@ -376,138 +376,147 @@ document.addEventListener('DOMContentLoaded' , () => {
 
 
 
-        function controlMovement(e) {
-            if (e.keyCode === 37 && left > -1) {
-                left -=20
-                fish.style.left = left + "px";
-            }
-    
-            if (e.keyCode === 39 && left < 464){
-                left +=20
-                fish.style.left = left + "px";
-            }
-        }
-        
-    
-        function shoot(e) {
-            // let bulletTop = 40
-    
-            if (e.keyCode === 32 ){
-                // bullet.style.display = 'block';
-            
-    
-                // bulletTop = 430
-                function showBullet(){
-                const bullet = document.createElement("div");
-                bullet.classList.add("bullet");
-                gameContainer.appendChild(bullet);
-                // var top = 800;
-                
-                bullet.style.top = bulletTop + 'px'
-                bullet.style.left = bulletLeft + 'px'
-    
-    
-                function moveBullet(){
-                    // top -= 1
-                    // bullet.style.top = top + 'px'
-                    bulletTop-=2
-                    bullet.style.top = bulletTop + 'px'
-                    bulletLeft = left + 75
-                    bullet.style.left = bulletLeft + 'px'  
-    
-                    if(bulletTop === 200){
-                        clearInterval(timerId)
-                        gameContainer.removeChild(bullet)
-                    } 
-
-                    // function collision(){
-                        
-    
-    
-                    //     if(canTop + 80 >= bulletTop){
-                    //         // console.log("can",canTop)
-                    //         // console.log("bullet",bulletTop)
-                    //         console.log("over over")
-                            
-                    //         gameContainer.removeChild(bullet)
-    
-                    //     }
-                    //  }
-                    //  collision();
-                    
-    
-                }
-                let timerId = setInterval(moveBullet, bulletSpeed)
-                bulletFire = true;   
-
-                // setTimeout(showBullet, 2000)  
-                }
-    
-                showBullet();
-    
-               
-
-              
-    
-                // moveBullet();
-            }
-        }
-    
-     
+function controlMovement(e) {
+    if (e.keyCode === 37 && left > -1) {
+        left -=20
+        fish.style.left = left + "px";
     }
+
+    if (e.keyCode === 39 && left < 464){
+        left +=20
+        fish.style.left = left + "px";
+    }
+}
+
+
+function shoot(e) {
+    // let bulletTop = 40
+
+    if (e.keyCode === 32 ){
+        // bullet.style.display = 'block';
     
-    init();
-    
-    })
-    
-    
-    
-                // bullet.style.left = player.x + 20 + "px";
-                
-                // if(top=== -415){
-    
-    
-                // if (!isGameOver) {
-                //         bullet.classList.add('bullet');
-                //     }
-    
-                // gameContainer.appendChild(bullet);
-    
-                // for(let i = 0; i <= 40 ; i++){
-                //     console.log(100);
-                   
-                //     // bullet.style.display = 'block';
-                //     bullet = document.createElement("div");
-                //      bullet.classList.add("bullet");
-                //     //  gameContainer.classList.appendChild(bullet);
-                //      top-=10;
-    
-                //      bullet.style.top = top + "px";
-                //      console.log(top)
-                //     // gameContainer.appendChild(bullet);
-    
-    
-                // }
-    
-                // if (!isGameOver) {
-                //     obstacle.classList.add('obstacle')
-                //     topObstacle.classList.add('topObstacle')
-                // }
-                // gameDisplay.appendChild(obstacle)
-                // gameDisplay.appendChild(topObstacle)
-                // obstacle.style.left = obstacleLeft + 'px'
-                // topObstacle.style.left = obstacleLeft + 'px'
-                // obstacle.style.bottom = obstacleBottom + 'px'
-                // topObstacle.style.bottom = obstacleBottom + gap + 'px'
-    
-    
-               
-    
-    
-    
+
+        bulletTop = 430
+        function showBullet(){
+        const bullet = document.createElement("div");
+        bullet.classList.add("bullet");
+        gameContainer.appendChild(bullet);
+        // var top = 800;
         
+        bullet.style.top = bulletTop + 'px'
+        bullet.style.left = bulletLeft + 'px'
+            
+        function moveBullet(){
+            // top -= 1
+            // bullet.style.top = top + 'px'
+            bulletTop-=2
+            bullet.style.top = bulletTop + 'px'
+            bulletLeft = left + 75
+            bullet.style.left = bulletLeft + 'px'  
+
+            if(bulletTop === 30){
+                clearInterval(timerId)
+                gameContainer.removeChild(bullet)
+            } 
+            
+            collision();
+
+        }
+        let timerId = setInterval(moveBullet, bulletSpeed)
+        // setTimeout(showBullet, 2000)  
+        bulletFire = false;
+
+        
+
+        }
+
+        showBullet();
+    }
+}
+
+function collision(){
+
     
+       
+
+
+for (let i = 0; i < surviving_cans.length; i++) {
+
+    const object1 = document.getElementById((surviving_cans[i])?.id);
+    const rect1 = object1.getBoundingClientRect();
+    const canTopPosition = rect1.top;
+    // surviving_cans.splice(i, 1);
+
+    // surviving_cans[i]?.id.remove();
+    // const a=surviving_cans.splice(i, 1);
+    // delete surviving_cans[i];
+    // surviving_cans.pop(0);
+    // delete surviving_cans[0];
+
     
+
+    console.log("bullet",bulletLeft)
+
+
+    if(canTopPosition + 80 >= bulletTop){
+        console.log("shoot") 
+        // surviving_cans.pop(0);
+        // surviving_cans.splice(1, 1);
+        // surviving_cans[i].remove();
+    }
+}
+}
+
+// console.log('other id:',surviving_cans)
+// // console.log()
+//         console.log("one",canTopPosition)
+//         console.log("two",bulletTop)
+//         // collision();
+
+//       }
+// }
+
+
+// for (let i = 0; i < surviving_cans.length; i++) {
+
+    //     const object1 = document.getElementById((surviving_cans[i])?.id);
+    //     const rect1 = object1.getBoundingClientRect();
+    //     const canTopPosition = rect1.top;
+    //     const canxPosition = rect1.x;
+        
+    // }
+    // for (let i = 0; i < surviving_cans.length; i++) {
+    //     const object1 = document.getElementById(surviving_cans[i]?.id);
+    //     const rect1 = object1.getBoundingClientRect();
+    //     const canTopPosition = rect1.top;
+    //     const canxPosition = rect1.x;
+        
+    //     if (i==1) {
+    //       // Delete the element at index i from the array
+    //     //   surviving_cans.splice(i, 1);
+          
+    //       // Update the loop counter to account for the removed element
+    //       i--;
+    //     }
+    //   }
     
-    
-    
+}
+
+init();
+
+})
+
+
+
+
+
+       
+
+
+
+
+
+
+
+
+
