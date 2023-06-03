@@ -345,16 +345,4 @@ height: 100px; */
     left: 200px;
 } */
 
-/* 
-if(canTop + 80 >= bulletTop && bulletLeft >= canLeft && bulletLeft < canLeft + 70 ){
 
-    // console.log("can",canTop)
-    // console.log("bullet",bulletTop)
-    console.log("over over")
-    
-    gameContainer.removeChild(can)
-    shootcan=true;
-    score++;
-    // gameContainer.removeChild(bullet)
-} 
-if (canTop2 + 80 >= bulletTop &&   bulletLeft >= canLeft2 + 70 && bulletLeft < canLeft2 + 140 ){ */
