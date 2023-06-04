@@ -12,31 +12,42 @@ document.addEventListener('DOMContentLoaded' , () => {
     const bullet = document.querySelector(".bullet");
     const grid = document.querySelector(".grid")
     const square = document.createElement('div')
+    const finalscore =  document.querySelector(".finalScoreView");
+    const gameOverScreen = document.querySelector(".gameOverScreen");
+    const finalScoreView = document.querySelector(".finalScoreView")
+    const levelTwoButton = document.querySelector(".levelTwoButton");
     
     
     var moveSpace = 10;
     
     function init(){
         startButton.addEventListener("click", startPlay);
+        // levelTwoButton.addEventListener("click", levelTwoButton);
     }
+
+
+
     function startPlay(){
         // console.log(100)
         landingMessage.classList.add("hide");
         scoreView.style.display = 'block';
         // badWater.style.display = 'block';
 
-    
+     
         
         let left = 0
         let top = 416
         let score = 0
-        let bulletSpeed = 5
-        let canSpeed = 40
+        let bulletSpeed = 3
+        let canSpeed = 50
         let bulletTop = 430
         let isGameOver = false;
         let bulletLeft = 60
         let canTop = 0
         let bulletFire = false
+        let guardFishTop = 420;
+        let bulletElement;
+        let finalscore;
 
 
        
@@ -57,7 +68,6 @@ document.addEventListener('DOMContentLoaded' , () => {
 
 
                 function moveCan(){
-                    // console.log(100)
 
                     canTop += 2
                     can.style.top = canTop + 'px'
@@ -72,6 +82,8 @@ document.addEventListener('DOMContentLoaded' , () => {
 
                     freshWater.classList.add("hide");
                     freshSky.classList.add("hide");
+                    gameOver();
+
                
                 }
 
@@ -108,7 +120,8 @@ document.addEventListener('DOMContentLoaded' , () => {
                 //             gameContainer.removeChild(bullet)
                 //         }
                 //     }
-                let canId = Math.random()*2;
+                // let canId = Math.random()*2;
+                let canId = Math.floor(Math.random()*(8-1))+1;
                 can.setAttribute('id', canId)
 
                     return {
@@ -128,28 +141,13 @@ document.addEventListener('DOMContentLoaded' , () => {
     
     console.log('individual can id:',surviving_cans)
 
-
-   
-    // for (let i = 0; i < surviving_cans.length; i++) {
-
-    //     const object1 = document.getElementById((surviving_cans[i])?.id);
-
-    //     const rect1 = object1.getBoundingClientRect();
-
-        
-    //     console.log("one",rect1)
-    //     console.log("two",bulletTop)
-    //     // collision();
-
-    //   }
-
         function controlMovement(e) {
-            if (e.keyCode === 37 && left > -1) {
+            if (e.keyCode === 37 && left > 0) {
                 left -=20
                 fish.style.left = left + "px";
             }
     
-            if (e.keyCode === 39 && left < 464){
+            if (e.keyCode === 39 && left < 480){
                 left +=20
                 fish.style.left = left + "px";
             }
@@ -185,7 +183,7 @@ document.addEventListener('DOMContentLoaded' , () => {
                         clearInterval(timerId)
                         gameContainer.removeChild(bullet)
                     } 
-                    
+                    bulletElement = bullet;
                     collision();
 
                 }
@@ -201,47 +199,156 @@ document.addEventListener('DOMContentLoaded' , () => {
             }
         }
 
-        function collision(){
+        collision();
+
+        
+        function collision() {
+            for (let i = 0; i < surviving_cans.length; i++) {
+              const object1 = document.getElementById(surviving_cans[i]?.id);
+              const rect1 = object1.getBoundingClientRect();
+              const canTopPosition = rect1.top;
+              const canLeftPosition = rect1.left;
+              
+            //   console.log("bullet left",bulletLeft)
+              console.log("CAN left",canLeftPosition)
+
+            //   bulletFix = bulletLeft + 75
+              const bulletRect = bulletElement.getBoundingClientRect(); // Access the bullet element's bounding client rect
+              const bulletTopPosition = bulletRect.top;
+              const bulletLeftPosition = bulletRect.left;
+              
+              console.log("bullet left",bulletLeftPosition)
+
+              if (
+                canTopPosition + 80 >= bulletTopPosition 
+                && canTopPosition + 80 <= guardFishTop
+                && bulletLeftPosition + (i * 70)>= canLeftPosition + i * 70
+                && bulletLeftPosition + (i * 70)< canLeftPosition + 70 + i * 70
+            
+
+
+              ) {
+                console.log("Bullet hit!");
+          
+                //Remove the element from the array  of the surviving_cans
+                surviving_cans.splice(i, 1);
+          
+                //Remove the can from the screen
+                gameContainer.removeChild(object1);
+                gameContainer.removeChild(bulletElement)
+
+          
+                //Loop counter reduced for removed element
+                i--;
+          
+                // Increase the score by a unit whenever the collision occurs
+                score++;
+                finalscore = score;
+                const scoreElement = document.querySelector('.scoreView');
+                scoreElement.textContent = "Score :"+ score;
+                
+                
+                if(finalscore == 8){
+                    console.log(score)
+                    console.log("game over")
+                    gameOver();
+                   
+
+                }
+              }
+              
+            }
+           
+          }
+
+          function gameOver(){
+            document.removeEventListener('keydown', controlMovement)
+            document.removeEventListener('keydown', shoot)
+            // finalscore.style.display = 'block';
+            finalScoreView.innerHTML =
+            "Game Over!!" +
+            "<br>" +
+            "Final Score: " + score +
+            "<br>" +
+            "<b>Level 2 unlocked<b>" +
+            "<br>" +
+            "<button>Play Again</button>";
+            
+            
+            scoreView.style.display = 'none';
+            // finalScoreView.textContent = "Final Score: " + score; // Set the final score
+            // gameOverScreen.classList.remove("hide"); // Display the game over screen
+            gameOverScreen.style.display = 'block';
+            }
+
+              
+            mainContainer.appendChild(scorePlaceHolder);
+    }
+
+
+
+
+
+    init();
+    
+    })
+
+    function levelTwoButton(){
+        // gameOverScreen.classList.add("hide");
+
+  // Call the startPlay function to start the game again
+        startPlay();
+    }
+
+    //     function collision(){
 
             
                
         
         
-        for (let i = 0; i < surviving_cans.length; i++) {
+    //     for (let i = 0; i < surviving_cans.length; i++) {
 
-            const object1 = document.getElementById((surviving_cans[i])?.id);
-            const rect1 = object1.getBoundingClientRect();
-            const canTopPosition = rect1.top;
-            const canLeftPosition = rect1.left;
-            console.log("position all index[",i,"]",rect1)
+    //         const object1 = document.getElementById((surviving_cans[i])?.id);
+    //         const rect1 = object1.getBoundingClientRect();
+    //         const canTopPosition = rect1.top;
+    //         const canLeftPosition = rect1.left;
+    //         console.log("position all index[",i,"]",rect1)
 
-            console.log("left position index[",i,"]",canLeftPosition)
-            // surviving_cans.splice(i, 1);
+    //         // surviving_cans.splice(i, 1);
 
-            // surviving_cans[i]?.id.remove();
-            // const a=surviving_cans.splice(i, 1);
-            // delete surviving_cans[i];
-            // surviving_cans.pop(0);
-            // delete surviving_cans[0];
+    //         // surviving_cans[i]?.id.remove();
+    //         // const a=surviving_cans.splice(i, 1);
+    //         // delete surviving_cans[i];
+    //         // surviving_cans.pop(0);
+    //         // delete surviving_cans[0];
 
             
-            console.log("bullet top",bulletTop)
+    //         console.log("bullet top",bulletTop)
 
-            console.log("bullet left",bulletLeft)
+    //         console.log("bullet left",bulletLeft)
+    //         console.log(score)
 
 
-            if(canTopPosition + 80 >= bulletTop && bulletLeft >= 149 + (i * 70) && bulletLeft < 219 + (i * 70)){
 
-                console.log("shoot") 
-                
-                score++;
-                // surviving_cans.pop(0);
-                // surviving_cans.splice(1, 1);
-                // surviving_cans[i].remove();
-            }
-        }
-    }
-    
+    //         // if(canTopPosition + 80 >= bulletTop && bulletLeft >= 0 + (i * 70) && bulletLeft < 70 + (i * 70)){
+    //         // if(canTopPosition + 80 >= bulletTop && bulletLeft + 75 >= 149 + (i * 70) && bulletLeft + 149 < 219 + (i * 70)){
+
+    //         if(canTopPosition + 80 >= bulletTop && bulletLeft + 75 >= canLeftPosition + (i * 70)){
+
+    //              console.log("bullet left",bulletLeft + 75)
+    //              console.log("left position index[",i,"]",canLeftPosition)
+
+    //             console.log("shoot") 
+    //             // shoot++;
+    //             score++;
+    //             // surviving_cans.pop(0);
+    //             // surviving_cans.slice(index-1, 1);
+    //             // surviving_cans[i].remove();
+    //         }
+
+    //     }
+    // }
+
     // console.log('other id:',surviving_cans)
     // // console.log()
     //         console.log("one",canTopPosition)
@@ -275,11 +382,7 @@ document.addEventListener('DOMContentLoaded' , () => {
             //     }
             //   }
             
-    }
     
-    init();
-    
-    })
     
     
     
