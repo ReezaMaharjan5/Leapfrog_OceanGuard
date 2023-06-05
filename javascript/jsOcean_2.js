@@ -15,22 +15,29 @@ document.addEventListener('DOMContentLoaded' , () => {
     const finalscore =  document.querySelector(".finalScoreView");
     const gameOverScreen = document.querySelector(".gameOverScreen");
     const finalScoreView = document.querySelector(".finalScoreView")
-    const levelTwoButton = document.querySelector(".levelTwoButton");
+    const playAgainButton = document.querySelector(".playAgainButton");
     
     
     var moveSpace = 10;
+    var presentLevel = 1;
+    let scoreShow = 0;
+
+
     
     function init(){
         startButton.addEventListener("click", startPlay);
-        // levelTwoButton.addEventListener("click", levelTwoButton);
     }
 
 
 
     function startPlay(){
         // console.log(100)
+        // var presentLevel = 1;
+
         landingMessage.classList.add("hide");
         scoreView.style.display = 'block';
+        gameOverScreen.classList.add("hide");
+    
         // badWater.style.display = 'block';
 
      
@@ -93,34 +100,7 @@ document.addEventListener('DOMContentLoaded' , () => {
                 }
                  let timerId = setInterval(moveCan, canSpeed);
 
-                // function collision(){  
-
-
-                //     // for(let i =0; i<6;i++){
-                //     // surviving_cans = can
-                //     const rect1 = can.getBoundingClientRect();
-                //     const bottomPositionCan = rect1.bottom;
-                //     console.log(bottomPositionCan)
-
-                //     if(bottomPositionCan >= bulletTop){
-                //         console.log("over over")
-                //         gameContainer.removeChild(can)
-                //         console.log(can.id)
-                    
-
-                //     }
-                // }
-                // function collision(){  
-                    
-                //         if(canTop + 100 >= bulletTop && bulletFire == true){
-                //             console.log("can",canTop)
-                //             console.log("bullet",bulletTop)
-                //             console.log("over over")
-                //             gameContainer.removeChild(can)
-                //             gameContainer.removeChild(bullet)
-                //         }
-                //     }
-                // let canId = Math.random()*2;
+               
                 let canId = Math.floor(Math.random()*(8-1))+1;
                 can.setAttribute('id', canId)
 
@@ -147,7 +127,7 @@ document.addEventListener('DOMContentLoaded' , () => {
                 fish.style.left = left + "px";
             }
     
-            if (e.keyCode === 39 && left < 480){
+            if (e.keyCode === 39 && left < 460){
                 left +=20
                 fish.style.left = left + "px";
             }
@@ -244,12 +224,12 @@ document.addEventListener('DOMContentLoaded' , () => {
                 // Increase the score by a unit whenever the collision occurs
                 score++;
                 finalscore = score;
+                scoreShow = score;
                 const scoreElement = document.querySelector('.scoreView');
                 scoreElement.textContent = "Score :"+ score;
                 
                 
                 if(finalscore == 8){
-                    console.log(score)
                     console.log("game over")
                     gameOver();
                    
@@ -264,28 +244,59 @@ document.addEventListener('DOMContentLoaded' , () => {
           function gameOver(){
             document.removeEventListener('keydown', controlMovement)
             document.removeEventListener('keydown', shoot)
-            // finalscore.style.display = 'block';
-            finalScoreView.innerHTML =
-            "Game Over!!" +
-            "<br>" +
-            "Final Score: " + score +
-            "<br>" +
-            "<b>Level 2 unlocked<b>" +
-            "<br>" +
-            "<button>Play Again</button>";
+       
+            
             
             
             scoreView.style.display = 'none';
             // finalScoreView.textContent = "Final Score: " + score; // Set the final score
+            finalScoreView.innerHTML ="Final Score: " + score;
             // gameOverScreen.classList.remove("hide"); // Display the game over screen
             gameOverScreen.style.display = 'block';
+
+            playAgainButton.addEventListener("click", playAgain);
+
             }
 
               
-            mainContainer.appendChild(scorePlaceHolder);
-    }
+        }
+        
+        
+        function playAgain(){
+            // gameOverScreen.classList.add("hide");
+            scoreView.style.display = 'block';
+            gameOverScreen.style.display = 'none';
 
+            console.log('over once')
+            console.log(scoreShow)
+            console.log(presentLevel)
 
+            if(presentLevel === 1 && scoreShow <= 8){
+                freshWater.classList.remove("hide");
+                freshSky.classList.remove("hide");
+
+                badWater.style.display = 'none';
+                pollutedSky.style.display = 'none';
+                startPlay();
+                console.log('level-1 again')
+            
+
+            } else if (presentLevel === 1 && scoreShow === 8){
+                
+            
+                
+                
+                startLevel2();
+                // startPlay();  
+
+            }else if(presentLevel === 2 && scoreShow <= 16){
+                startLevel3();
+            }  
+        }
+
+       
+
+       
 
 
 
@@ -293,108 +304,7 @@ document.addEventListener('DOMContentLoaded' , () => {
     
     })
 
-    function levelTwoButton(){
-        // gameOverScreen.classList.add("hide");
-
-  // Call the startPlay function to start the game again
-        startPlay();
-    }
-
-    //     function collision(){
-
-            
-               
-        
-        
-    //     for (let i = 0; i < surviving_cans.length; i++) {
-
-    //         const object1 = document.getElementById((surviving_cans[i])?.id);
-    //         const rect1 = object1.getBoundingClientRect();
-    //         const canTopPosition = rect1.top;
-    //         const canLeftPosition = rect1.left;
-    //         console.log("position all index[",i,"]",rect1)
-
-    //         // surviving_cans.splice(i, 1);
-
-    //         // surviving_cans[i]?.id.remove();
-    //         // const a=surviving_cans.splice(i, 1);
-    //         // delete surviving_cans[i];
-    //         // surviving_cans.pop(0);
-    //         // delete surviving_cans[0];
-
-            
-    //         console.log("bullet top",bulletTop)
-
-    //         console.log("bullet left",bulletLeft)
-    //         console.log(score)
+   
 
 
-
-    //         // if(canTopPosition + 80 >= bulletTop && bulletLeft >= 0 + (i * 70) && bulletLeft < 70 + (i * 70)){
-    //         // if(canTopPosition + 80 >= bulletTop && bulletLeft + 75 >= 149 + (i * 70) && bulletLeft + 149 < 219 + (i * 70)){
-
-    //         if(canTopPosition + 80 >= bulletTop && bulletLeft + 75 >= canLeftPosition + (i * 70)){
-
-    //              console.log("bullet left",bulletLeft + 75)
-    //              console.log("left position index[",i,"]",canLeftPosition)
-
-    //             console.log("shoot") 
-    //             // shoot++;
-    //             score++;
-    //             // surviving_cans.pop(0);
-    //             // surviving_cans.slice(index-1, 1);
-    //             // surviving_cans[i].remove();
-    //         }
-
-    //     }
-    // }
-
-    // console.log('other id:',surviving_cans)
-    // // console.log()
-    //         console.log("one",canTopPosition)
-    //         console.log("two",bulletTop)
-    //         // collision();
-    
-    //       }
-        // }
-     
-
-        // for (let i = 0; i < surviving_cans.length; i++) {
-
-            //     const object1 = document.getElementById((surviving_cans[i])?.id);
-            //     const rect1 = object1.getBoundingClientRect();
-            //     const canTopPosition = rect1.top;
-            //     const canxPosition = rect1.x;
-                
-            // }
-            // for (let i = 0; i < surviving_cans.length; i++) {
-            //     const object1 = document.getElementById(surviving_cans[i]?.id);
-            //     const rect1 = object1.getBoundingClientRect();
-            //     const canTopPosition = rect1.top;
-            //     const canxPosition = rect1.x;
-                
-            //     if (i==1) {
-            //       // Delete the element at index i from the array
-            //     //   surviving_cans.splice(i, 1);
-                  
-            //       // Update the loop counter to account for the removed element
-            //       i--;
-            //     }
-            //   }
-            
-    
-    
-    
-    
-    
-    
-               
-    
-    
-    
-        
-    
-    
-    
-    
-    
+   
