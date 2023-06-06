@@ -16,13 +16,6 @@
     const playAgainButton = document.querySelector(".playAgainButton");
     const levelView = document.querySelector(".levelView");
    
-    // import {
-    //     bulletElement
-    //   } from './jsOcean_2.js';
-
-      // Access the bulletElement variable
-    //   console.log(bulletElement);
-
     var moveSpace = 10;
     var presentLevel = 1;
     let scoreShow = 0;
@@ -34,16 +27,11 @@
     
     const oceanMixHeight = 590;
 
-    function startLevel2(){
+    function startLevel3(){
     console.log('enter level-2')
-    // presentLevel = 2;
     score = 0;
-
-    // left = 0;
-    // fish.style.left = left + "px";
-    
     startPlay2();
-    // startPlay();
+    
 
 
 }
@@ -130,68 +118,68 @@ for(let i =0; i<8;i++){
 console.log('individual plastic id:',surviving_plastic)
 
 
-collision2();
+// collision2();
 
     
-function collision2() {
-    for (let i = 0; i < surviving_plastic.length; i++) {
-      const object2 = document.getElementById(surviving_plastic[i].id);
-      const rect2 = object2.getBoundingClientRect();
-      const plasticTopPosition = rect2.top;
-      const plasticLeftPosition = rect2.left;
+// function collision2() {
+//     for (let i = 0; i < surviving_plastic.length; i++) {
+//       const object2 = document.getElementById(surviving_plastic[i].id);
+//       const rect2 = object2.getBoundingClientRect();
+//       const plasticTopPosition = rect2.top;
+//       const plasticLeftPosition = rect2.left;
 
-      console.log(rect2)
+//       console.log(rect2)
       
-      //   console.log("bullet left",bulletLeft)
-      //   console.log("CAN left",canLeftPosition)
+//       //   console.log("bullet left",bulletLeft)
+//       //   console.log("CAN left",canLeftPosition)
       
-      //   bulletFix = bulletLeft + 75
-      //   const bulletFinal = document.querySelector(".bullet");
-      //   const bulletRect = bulletFinal.getBoundingClientRect(); // Access the bullet element's bounding client rect
-      const bulletRect = bulletElement.getBoundingClientRect(); // Access the bullet element's bounding client rect
-      console.log(bulletRect)
+//       //   bulletFix = bulletLeft + 75
+//       //   const bulletFinal = document.querySelector(".bullet");
+//       //   const bulletRect = bulletFinal.getBoundingClientRect(); // Access the bullet element's bounding client rect
+//       const bulletRect = bulletElement.getBoundingClientRect(); // Access the bullet element's bounding client rect
+//       console.log(bulletRect)
       
-      const bulletTopPosition = bulletRect.top;
-      const bulletLeftPosition = bulletRect.left;
+//       const bulletTopPosition = bulletRect.top;
+//       const bulletLeftPosition = bulletRect.left;
       
-    //   console.log("bullet left",bulletLeftPosition)
+//     //   console.log("bullet left",bulletLeftPosition)
 
-      console.log(rect2)
-      console.log(bulletRect)
+//       console.log(rect2)
+//       console.log(bulletRect)
 
 
-      if (
-        plasticTopPosition + plasticHeight >= bulletTopPosition 
-        && plasticTopPosition + plasticHeight <= guardFishTop
-        && bulletLeftPosition + (i * plasticWidth)>= plasticLeftPosition + i * plasticWidth
-        && bulletLeftPosition + (i * plasticWidth)< plasticLeftPosition + plasticWidth + i * plasticWidth
+//       if (
+//         plasticTopPosition + plasticHeight >= bulletTopPosition 
+//         && plasticTopPosition + plasticHeight <= guardFishTop
+//         && bulletLeftPosition + (i * plasticWidth)>= plasticLeftPosition + i * plasticWidth
+//         && bulletLeftPosition + (i * plasticWidth)< plasticLeftPosition + plasticWidth + i * plasticWidth
     
 
 
-      ) {
-        console.log("Bullet hit!");
+//       ) {
+//         console.log("Bullet hit!");
   
-        //Remove the element from the array  of the surviving_cans
-        surviving_cans.splice(i, 1);
+//         //Remove the element from the array  of the surviving_cans
+//         surviving_cans.splice(i, 1);
   
-        //Remove the can from the screen
-        gameContainer.removeChild(object2);
-        gameContainer.removeChild(bulletElement)
+//         //Remove the can from the screen
+//         gameContainer.removeChild(object2);
+//         gameContainer.removeChild(bulletElement)
 
   
-        //Loop counter reduced for removed element
-        i--;
+//         //Loop counter reduced for removed element
+//         i--;
   
-        // Increase the score by a unit whenever the collision occurs
-        score++;
-        finalscore = score;
-        scoreShow = score;
-        const scoreElement = document.querySelector('.scoreView');
-        scoreElement.textContent = "Score :"+ score;
-      }
+//         // Increase the score by a unit whenever the collision occurs
+//         score++;
+//         finalscore = score;
+//         scoreShow = score;
+//         const scoreElement = document.querySelector('.scoreView');
+//         scoreElement.textContent = "Score :"+ score;
+//       }
 
-    }
-}
+//     }
+// }
 }     
 
 

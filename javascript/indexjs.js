@@ -1,5 +1,3 @@
-// export const bulletElement = null; // or set an initial value
-
 document.addEventListener('DOMContentLoaded' , () => {
 
     const gameContainer = document.querySelector(".gameContainer");
@@ -25,7 +23,7 @@ document.addEventListener('DOMContentLoaded' , () => {
     const canWidth = 70;
     const oceanMixHeight = 590;
 
-    let surviving_cans2  =[];
+    // let surviving_cans2  =[];
 
      
     var moveSpace = 10;
@@ -155,16 +153,18 @@ document.addEventListener('DOMContentLoaded' , () => {
     }
     let surviving_cans2  =[];
     
-    if(presentLevel === 2 || presentLevel === 3){
-        let surviving_cans2  =[];
+    console.log(levelTwoEnter);
+
+    if(levelTwoEnter){
+
         for(let i =0; i<8;i++){
-            const object_can =  objectCan(i*70 , -350);
+            const object_can =  objectCan(i*70 , -300);
             surviving_cans2.push(object_can);
-            const canPosition2 = object_can
-            console.log(canPosition2)
+            const canPosition = object_can
+            console.log(canPosition)
         }  
 
-    console.log('individual plastic id:',surviving_cans2)
+    console.log('individual can id:',surviving_cans2)
 
     }
 
@@ -233,9 +233,11 @@ document.addEventListener('DOMContentLoaded' , () => {
         }
 
         collision();
+        // collision2();
 
         
         function collision() {
+   
             let strikeCount = 0;
 
             for (let i = 0; i < surviving_cans.length; i++) {
@@ -433,7 +435,7 @@ document.addEventListener('DOMContentLoaded' , () => {
             
         
                 // if(finalscore === 8 || finalscore === 16 || finalscore  == 18){
-                if(finalscore >= 8){
+                if(finalscore >= 8 && presentLevel === 1){
 
                     console.log("game over")
                     if(presentLevel === 1){
@@ -451,9 +453,9 @@ document.addEventListener('DOMContentLoaded' , () => {
                 }
 
                 
-                if (presentLevel === 3 && finalscore >= 8 && levelTwoEnter){
-                    startLevel2();
-                }
+                // if (presentLevel === 3 && finalscore >= 8 && levelTwoEnter){
+                //     startLevel2();
+                // }
         }
                 // if(presentLevel === 1 && finalscore === 8){
                 //     }
@@ -462,9 +464,11 @@ document.addEventListener('DOMContentLoaded' , () => {
 
 
 
-
-                for (let i = 0; i < surviving_plastics.length; i++) {
-                const object2 = document.getElementById(surviving_plastics[i].id);
+                if (finalscore >= 8 && presentLevel == 2){
+                    console.log("caffffff")
+                   console.log(surviving_cans2.length)
+                for (let i = 0; i < surviving_cans2.length; i++) {
+                const object2 = document.getElementById(surviving_cans2[i].id);
                 const rect2 = object2.getBoundingClientRect();
                 const plasticTopPosition = rect2.top;
                 const plasticLeftPosition = rect2.left;
@@ -472,19 +476,21 @@ document.addEventListener('DOMContentLoaded' , () => {
                 const bulletRect = bulletElement.getBoundingClientRect();
                 const bulletTopPosition = bulletRect.top;
                 const bulletLeftPosition = bulletRect.left;
-            
+                    console.log(800)
+                    console.log("plasticTopo", plasticLeftPosition, "plasticheight", plasticHeight, "bulletTopPos", bulletTopPosition );
+                    console.log("bulletLrft", bulletLeftPosition, "plasticWidth", plasticWidth, "plasticLeft", plasticLeftPosition)
                 if (
                   plasticTopPosition + plasticHeight >= bulletTopPosition &&
                   plasticTopPosition + plasticHeight <= guardFishTop &&
                   bulletLeftPosition + i * plasticWidth >= plasticLeftPosition + i * plasticWidth &&
                   bulletLeftPosition + i * plasticWidth < plasticLeftPosition + plasticWidth + i * plasticWidth
                 ) {
-                  console.log('Bullet hit!');
+                  console.log('2Bullet hit!');
                   strikeCount++;
                 // }
             
                 // if (strikeCount === 1) {
-                  surviving_plastics.splice(i, 1);
+                    surviving_cans2.splice(i, 1);
                   gameContainer.removeChild(object2);
                   gameContainer.removeChild(bulletElement);
                   i--; 
@@ -498,7 +504,7 @@ document.addEventListener('DOMContentLoaded' , () => {
                 // }
               }
 
-              if(finalscore >= 8){
+              if(finalscore >= 16){
 
                 console.log("game over")
                 if(presentLevel === 1){
@@ -514,11 +520,12 @@ document.addEventListener('DOMContentLoaded' , () => {
                 //     startLevel3();
                 // }
             }
+        }
 
             
+    }
             if (presentLevel === 3 && finalscore >= 8 && levelTwoEnter){
                 startLevel2();
-            }
             }
             
               
@@ -547,7 +554,9 @@ document.addEventListener('DOMContentLoaded' , () => {
             fish.style.left = left + "px";
 
             // if(finalscore === 8){
-            //     showInLevel2.style.display = 'none';
+            // showInLevel2.style.display = 'block';
+
+
             // }
 
 
@@ -588,9 +597,9 @@ document.addEventListener('DOMContentLoaded' , () => {
                 // levelTwoEnter = true;
                 level += 1;
                 startPlay();
-                if (presentLevel === 3 && finalscore >= 8 && levelTwoEnter){
-                    startLevel2();
-                }
+                // if (presentLevel === 3 && finalscore >= 8 && levelTwoEnter){
+                //     startLevel2();
+                // }
                 // startPlay();  
 
             }else if(presentLevel === 3 && scoreShow <= 16){
