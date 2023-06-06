@@ -49,8 +49,16 @@ document.addEventListener('DOMContentLoaded' , () => {
         landingMessage.classList.add("hide");
         scoreView.style.display = 'block';
         levelView.style.display = 'block';
+        
 
         gameOverScreen.classList.add("hide");
+
+
+        freshWater.classList.remove("hide");
+        freshSky.classList.remove("hide");
+
+        badWater.style.display = 'none';
+        pollutedSky.style.display = 'none';
     
         // badWater.style.display = 'block';
    
@@ -294,7 +302,8 @@ document.addEventListener('DOMContentLoaded' , () => {
                 const scoreElement = document.querySelector('.scoreView');
                 scoreElement.textContent = "Score :"+ score;
 
-            } 
+              }
+            
              }else if (presentLevel === 2 || presentLevel === 3){
             // }else if (levelTwoEnter){
             
@@ -304,15 +313,9 @@ document.addEventListener('DOMContentLoaded' , () => {
                 canTopPosition + canHeight <= guardFishTop &&
                 bulletLeftPosition + i * canWidth >= canLeftPosition + i * canWidth &&
                 bulletLeftPosition + i * canWidth < canLeftPosition + canWidth + i * canWidth
-              ) {
-                console.log('Bullet hit2!');
+              ) {console.log('Bullet hit2!');
           
 
-                strikeCount++;
-                console.log(strikeCount);
-
-              }
-                if (strikeCount === 1) {
                   // Perform the desired action only when the condition has been satisfied twice
                   surviving_cans.splice(i, 1);
                   gameContainer.removeChild(object1);
@@ -327,6 +330,30 @@ document.addEventListener('DOMContentLoaded' , () => {
                   strikeCount = 0;
 
                 }
+
+            //     console.log('Bullet hit2!');
+          
+
+            //     strikeCount += 1;
+            //     console.log(strikeCount);
+
+            //   }
+            //     if (strikeCount === 1) {
+            //       // Perform the desired action only when the condition has been satisfied twice
+            //       surviving_cans.splice(i, 1);
+            //       gameContainer.removeChild(object1);
+            //       gameContainer.removeChild(bulletElement);
+            //       i--;
+          
+            //       score++;
+            //       finalscore = score;
+            //       scoreShow = score;
+            //       const scoreElement = document.querySelector('.scoreView');
+            //       scoreElement.textContent = 'Score :' + score;
+            //       strikeCount = 0;
+
+            //     }
+
             }
         
 
@@ -439,6 +466,7 @@ document.addEventListener('DOMContentLoaded' , () => {
                     console.log("game over")
                     if(presentLevel === 1){
                         gameOver();
+
                     }
                     presentLevel += 1;
 
@@ -501,6 +529,8 @@ document.addEventListener('DOMContentLoaded' , () => {
                   strikeCount = 0;
                 // }
               }
+            }
+        }
 
               if(finalscore == 16 && levelTwoEnter && level === 2){
 
@@ -521,10 +551,9 @@ document.addEventListener('DOMContentLoaded' , () => {
                 //     startLevel3();
                 // }
             }
-        }
 
             
-    }
+    
             if (presentLevel === 3 && finalscore >= 8 && levelTwoEnter){
                 startLevel2();
             }
