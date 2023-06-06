@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded' , () => {
     const canWidth = 70;
     const oceanMixHeight = 590;
 
-    // let surviving_cans2  =[];
 
      
     var moveSpace = 10;
@@ -58,7 +57,7 @@ document.addEventListener('DOMContentLoaded' , () => {
         let left = 0
         let score = 0
         let bulletSpeed = 3
-        let canSpeed = 80
+        let canSpeed = 90
         let bulletTop = 430
         // let top = 416
         // let isGameOver = false;
@@ -78,7 +77,7 @@ document.addEventListener('DOMContentLoaded' , () => {
 
         if(presentLevel === 2){
             bulletSpeed = 2;
-            canSpeed = 50;
+            canSpeed = 60;
             levelTwoEnter = true;
             // level += 1;
             
@@ -153,7 +152,7 @@ document.addEventListener('DOMContentLoaded' , () => {
     }
     let surviving_cans2  =[];
     
-    console.log(levelTwoEnter);
+    // console.log(levelTwoEnter);
 
     if(levelTwoEnter){
 
@@ -206,7 +205,7 @@ document.addEventListener('DOMContentLoaded' , () => {
                     // bullet.style.top = top + 'px'
                     bulletTop-=2
                     bullet.style.top = bulletTop + 'px'
-                    bulletLeft = left + 75
+                    bulletLeft = left + 55
                     bullet.style.left = bulletLeft + 'px'  
     
                     if(bulletTop === 30){
@@ -251,8 +250,8 @@ document.addEventListener('DOMContentLoaded' , () => {
 
             //   bulletFix = bulletLeft + 75
             //   const bulletFinal = document.querySelector(".bullet");
-            //   const bulletRect = bulletFinal.getBoundingClientRect(); // Access the bullet element's bounding client rect
-              const bulletRect = bulletElement.getBoundingClientRect(); // Access the bullet element's bounding client rect
+            //   const bulletRect = bulletFinal.getBoundingClientRect(); 
+              const bulletRect = bulletElement.getBoundingClientRect(); 
               
               const bulletTopPosition = bulletRect.top;
               const bulletLeftPosition = bulletRect.left;
@@ -432,7 +431,7 @@ document.addEventListener('DOMContentLoaded' , () => {
             // }
             
             
-            
+               
         
                 // if(finalscore === 8 || finalscore === 16 || finalscore  == 18){
                 if(finalscore >= 8 && presentLevel === 1){
@@ -465,8 +464,7 @@ document.addEventListener('DOMContentLoaded' , () => {
 
 
                 if (finalscore >= 8 && presentLevel == 2){
-                    console.log("caffffff")
-                   console.log(surviving_cans2.length)
+        
                 for (let i = 0; i < surviving_cans2.length; i++) {
                 const object2 = document.getElementById(surviving_cans2[i].id);
                 const rect2 = object2.getBoundingClientRect();
@@ -504,7 +502,7 @@ document.addEventListener('DOMContentLoaded' , () => {
                 // }
               }
 
-              if(finalscore >= 16){
+              if(finalscore == 16 && levelTwoEnter && level === 2){
 
                 console.log("game over")
                 if(presentLevel === 1){
@@ -512,6 +510,9 @@ document.addEventListener('DOMContentLoaded' , () => {
                 }
                 presentLevel += 1;
 
+                if(levelTwoEnter && scoreShow >= 16){
+                    gameOver();
+                }
 
                 console.log(scoreShow)
                 console.log("level-",presentLevel)
