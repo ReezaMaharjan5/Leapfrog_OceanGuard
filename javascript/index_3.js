@@ -37,6 +37,9 @@ document.addEventListener('DOMContentLoaded' , () => {
     let bulletElement;
     let randomStrikeCount;
     let canNumber = 8;
+    let surviving_cans  =[];
+    let plasticWidth = 500;
+
 
     
 
@@ -49,8 +52,7 @@ document.addEventListener('DOMContentLoaded' , () => {
 
     //funtion to start the game
     function startPlay(){
-
-        console.log(gameTrackCount)
+        
         // console.log()
         //hide the instruction in the cloud button, score view, level view, gameover screen, polluted water and polluted sky image 
         // and show the fresh water image and fresh sky 
@@ -100,13 +102,20 @@ document.addEventListener('DOMContentLoaded' , () => {
             levelTwoEnter = true;            
         }
 
+        //conditions update for the level 3
+
+        // if(gameTrackCount === 4){
+        //     bulletSpeed = 1;
+        //     canSpeed = 50;
+        //     levelThreeEnter = true;
+        // }
+
         //on pressing the "left and right arrow keys", call the function to control the movement of the guard fish
         document.addEventListener('keydown', controlMovement)
 
         // on pressing the "space bar", call the function to fire bullet by the guard fish
         document.addEventListener('keydown', shoot)
-
-            
+    
             //create the cans on the screen and move can downwards continuosly
             function objectCan(canLeftParam, cantopparam){
                 let canLeft = canLeftParam || 0;
@@ -171,6 +180,7 @@ document.addEventListener('DOMContentLoaded' , () => {
 
 
     //if level - 2, then generate other row of cans with specific distance from the top
+    // if((levelTwoEnter && level === 2)|| (levelTwoEnter && level === 3)){
     if(levelTwoEnter|| gameTrackCount === 3){
 
         for(let i =0; i<canNumber;i++){
@@ -185,7 +195,45 @@ document.addEventListener('DOMContentLoaded' , () => {
 
     console.log('individual can, first row id:',surviving_cans)
 
-   
+
+    // if(gameTrackCount === 3 || level === 3){
+    //     function objectPlastic(){
+    //         let plasticFloatLeft = -20;
+
+    //         // let randomPosition = Math.floor(Math.random() * (250 - 1) + 1);
+    //         // let plasticFloatTop = randomPosition
+
+    //         let plasticFloatTop = 200
+    //         const floatPlastic = document.createElement('div');
+        
+    //         floatPlastic.classList.add('plasticMove');
+    //         gameContainer.appendChild(floatPlastic);
+    
+    //         floatPlastic.style.left = plasticFloatLeft + 'px';
+    //         floatPlastic.style.top = plasticFloatTop + 'px'
+
+    //         function leftMovePlastic(){
+
+    //             if(plasticFloatLeft < 684){
+    //                 plasticFloatLeft += 2
+
+    //             floatPlastic.style.left = plasticFloatLeft + 'px'
+    //             }
+    //             if(plasticFloatLeft + plasticWidth > 684){
+    //                 clearInterval(timerId);
+    //                 gameContainer.removeChild(floatPlastic);
+    //             }
+    //         }
+    //         let timerId = setInterval(leftMovePlastic, 30);
+    //         setTimeout(objectPlastic, 6000);
+        
+    //      }
+    //     objectPlastic();
+    //      }
+
+
+    
+
             
 
 
@@ -275,6 +323,7 @@ document.addEventListener('DOMContentLoaded' , () => {
               const bulletLeftPosition = bulletRect.left;
             
               //track the flow of the game and add condition add the conditions of level - 1
+            //   if(gameTrackCount === 1 || gameTrackCount === 4){
               if(gameTrackCount === 1){
 
              
@@ -311,6 +360,7 @@ document.addEventListener('DOMContentLoaded' , () => {
             
               //tracking the level -2 and add the collision conditon of second row of falling cans
              }else if (gameTrackCount === 2 || gameTrackCount === 3|| levelTwoEnter === true){
+            // }else if (levelTwoEnter){
             
             //logic for collision check between the bullet and the cans which disapper by one hit
             if (
@@ -348,6 +398,7 @@ document.addEventListener('DOMContentLoaded' , () => {
 
             //check condition for completion level -1 and show the game over updates
             if(finalscore >= 8 && gameTrackCount === 1){
+            // if(finalscore === 8 || finalscore === 16 || finalscore  == 18){
 
                     console.log("game over")
                     
@@ -367,6 +418,7 @@ document.addEventListener('DOMContentLoaded' , () => {
                 //track the flow of the game and the level - 2 in the game 
                 if ((finalscore >= 8 && gameTrackCount == 2) ||  gameTrackCount == 3){
 
+                // if ((finalscore >= 8 && gameTrackCount == 2) || (finalscore >= 8 && gameTrackCount == 4)){
                 
                 //apply the conditions for secret and magical cans with unknown number of counts for striking the bullet
                 for (let i = 0; i < surviving_cans2.length; i++) {
@@ -429,6 +481,11 @@ document.addEventListener('DOMContentLoaded' , () => {
               }
             }
         
+           
+
+
+
+
               //check condition for completion level -2 and show the game over updates
               if(finalscore == 16 && levelTwoEnter && level === 2){
 
@@ -449,8 +506,14 @@ document.addEventListener('DOMContentLoaded' , () => {
                     gameOver();
                 }
 
+                
+                    
+                // }else if(gameTrackCount === 3){
+                //     startLevel3();
+                // }
             }
-        
+
+            
             }
             console.log(scoreShow)
             console.log("level-",gameTrackCount)    
@@ -563,7 +626,7 @@ document.addEventListener('DOMContentLoaded' , () => {
                 level += 1;
                 }
                 startPlay();
-                
+               
 
             }else if(gameTrackCount === 3 && scoreShow <= 16){
                 if(level === 2 && scoreShow === 16){
@@ -574,6 +637,11 @@ document.addEventListener('DOMContentLoaded' , () => {
             }
 
         }
+
+       
+
+       
+
         
         init();
         
@@ -590,51 +658,6 @@ document.addEventListener('DOMContentLoaded' , () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-     //  if(gameTrackCount === 3 || level === 3){
-    //     function objectPlastic(){
-    //         let plasticFloatLeft = -20;
-
-    //         // let randomPosition = Math.floor(Math.random() * (250 - 1) + 1);
-    //         // let plasticFloatTop = randomPosition
-
-    //         let plasticFloatTop = 200
-    //         const floatPlastic = document.createElement('div');
-        
-    //         floatPlastic.classList.add('plasticMove');
-    //         gameContainer.appendChild(floatPlastic);
-    
-    //         floatPlastic.style.left = plasticFloatLeft + 'px';
-    //         floatPlastic.style.top = plasticFloatTop + 'px'
-
-    //         function leftMovePlastic(){
-
-    //             if(plasticFloatLeft < 684){
-    //                 plasticFloatLeft += 2
-
-    //             floatPlastic.style.left = plasticFloatLeft + 'px'
-    //             }
-    //             if(plasticFloatLeft + plasticWidth > 684){
-    //                 clearInterval(timerId);
-    //                 gameContainer.removeChild(floatPlastic);
-    //             }
-    //         }
-    //         let timerId = setInterval(leftMovePlastic, 30);
-    //         setTimeout(objectPlastic, 6000);
-        
-    //      }
-    //     objectPlastic();
-    //      }
 
 
 
