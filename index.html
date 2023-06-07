@@ -35,10 +35,10 @@
         <div class="messageCloud">
           <div class="instruction_1">
               <p>
-              <ul>
-                <li> Click<span class = "greenText"> Start Button</span>  to start guarding.</li>
-                <li>Use <span class = "greenText"> Right Arrow Key</span> and <span class = "greenText"> Left Arrow Key</span> to move left and right.</li>
-                <li>Shoot and destroy the falling impurities by pressing the <span class = "greenText"> Space bar.</span></li>
+              <ul class="greenText">
+                <li> Click<span class = "pinktext"> Start Button</span>  to start guarding.</li>
+                <li>Use <span class = "pinktext"> Right Arrow Key</span> and <span class = "pinktext"> Left Arrow Key</span> to move left and right.</li>
+                <li>Shoot and destroy the falling impurities by pressing the <span class = "pinktext"> Space bar.</span></li>
               </ul>
               </p>
 
@@ -47,16 +47,6 @@
             <div class="startButton"><button>Start</button></div>
           </div>
         </div>
-
-        <!-- <div class="messageCloud">
-        
-          <div class="instruction_2">
-            <div class="scoreView"> Score : 0 </div>
-            <div class="restartButton"><button>Restart</button></div>
-
-          </div>
-        
-        </div> -->
 
         <div class="skySpace"></div>
         <div class="pollutedSky"></div>
@@ -81,15 +71,43 @@
         </div> -->
 
         <div class="gameOverScreen">
-          <div class = showInstruction>
-            <p>Game Over!!</p>
-            
+          <div class="firstMessage">
+            <div class = "showInstruction1">
+              <p>GAME OVER!!</p>
+              
+            </div>
+            <div class = "showInstruction2">
+              <p>WOW, YOU WON!!</p>
+            </div>
           </div>
 
+          <div class="levelUpDetial">
+
+          <div class="continueplay">
+            <p>Would you continue helping me?<br>
+
+              <span class = "pinktext">PLEASE HELP ME TO SAVE <br>
+                 MY HOME</span>
+            </p>
+          </div>
 
           <div class="showInLevel2">
-            <li>LEVEL - 2 Unlocked</li>
-            <li>Ready To Shoot More Impurities?</li>
+            <ul>
+              <li>LEVEL - 2 UNLOCKED</li>
+
+              <li>Ready for the <span class = "pinktext">SECRET CANS?</span> <br>
+                  They need secret number of bullet strikes</li>
+              </ul>
+          </div>
+
+          <div class="showInLevel3">
+            <ul>
+              <li>LEVEL - 3 UNLOCKED</li>
+
+              <li>Be aware of <span class = "pinktext">Floating Plastics</span> <br>
+                  The plastics stops the bullet from reaching the cans</li>
+            </ul>
+          </div>
           </div>
           <div class="finalScoreView">
            <!-- <p>GAME OVER</p>
@@ -107,6 +125,9 @@
 
 
     <script src = "javascript/indexjs.js"></script>
+
+    <!-- <script src = "javascript/internaljs.js"></script> -->
+
 
     <script src = "javascript/level2js.js"></script>
  

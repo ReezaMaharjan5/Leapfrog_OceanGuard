@@ -3,23 +3,15 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Stylish', sans-serif;
-    /* background-color: aliceblue; */
 }
 
 .gameContainer{
     margin: 0px 400px;
-    
-    /* display: flex;
-    justify-content: space-between;
-    flex-direction: row; */
     margin: auto;
     left: 0px;
     height: 90vh;
     width: 620px;
     position: relative;
-    /* padding: 50px; */
-     /* background-color: rgb(88, 81, 94); */
-
 }
 .messageCloud{
     background-image: url("images/cloud_1.png");
@@ -33,26 +25,30 @@
     left: 8vw;
     color: black;
     text-align: center;
-    /* background-color: black; */
     padding: 8px;
     border-radius: 10px;
 }
 
-.instruction_1, .instruction_2{
-    margin: 98px 0px 0px 50px;
+.instruction_1{
+    padding-top: 1%;
+    margin: 110px 0px 0px 50px;
     width: 360px;
-    font-size: 20px;
+    max-width: 350px;
 }
-.instruction_2{
-    margin-top: 120px;
-    font-size: 26px;
-}
-button{
-    box-shadow: 0 0 0.2em 0.2em rgb(197, 240, 234);
+.playAgainButton button{
+    position: absolute;
+    bottom: -55px;
+    left: 126px
+  }
+.startButton{
+    margin-top: 100px;
 
+}
+
+button{
+    box-shadow: 0 0 0.1em 0.1em rgb(197, 240, 234);
     font-size: 28px;
     margin: 14px;
-    /* border: none; */
     padding: 4px 12px;
     border-radius: 10px;
     color: white;
@@ -62,20 +58,24 @@ button{
 button:hover{
     background-color: rgb(7, 190, 47);
 }
-.instruction_1 ul{
+.instruction_1 ul, .showInLevel3 ul, .showInLevel2 ul, .showInLevel3 ul{
     list-style: none;
 }
+
 .scoreView{
-    top: 1vh;
+    top: 8vh;
     right: 2vw;
     padding: 2px 4px;
+    color: green;
+
 
 }
 
 .levelView{
-    top: 8vh;
+    top: 1vh;
     right: 2vw;
     padding: 2px 6px;
+    color:rgb(249, 2, 117);
 
 }
 
@@ -85,7 +85,6 @@ button:hover{
     border-radius: 10px;
     position: absolute;
     z-index: 3;
-    color: green;
     text-align: center;
     background-color: white;
     box-shadow: 0 0 0.1em 0.1em rgb(101, 185, 120);
@@ -123,7 +122,7 @@ button:hover{
     z-index: 1;
     margin-left: 20px;
     /* left: 20px; */
-    border: solid 2px rgb(127, 133, 137);
+    border: solid 1px rgb(127, 133, 137);
     border-radius: 5px;
 }
 
@@ -134,27 +133,37 @@ button:hover{
     background-position: center;
     height: 80px;
     width: 70px;
-    /* left: 40px; */
     position: absolute;
     z-index: 1;
     margin-left: 20px;
-    /* left: 20px; */
-    border: solid 2px rgb(127, 133, 137);
+    border: solid 1px rgb(127, 133, 137);
+    border-radius: 5px;
+}
+
+.bottleMove {
+    background-image: url('images/bottle_2.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 80px;
+    width: 70px;
+    position: absolute;
+    z-index: 1;
+    margin-left: 20px;
+    border: solid 1px rgb(127, 133, 137);
     border-radius: 5px;
 }
 
 
 
 .skySpace{
-    /* background-image: url('skyBackground_4_1.jpg'); */
     background-image: url('images/freshsky.jpg');
-
     background-repeat: no-repeat;
+
     background-size: cover;
     margin: 0px 20px 0px 20px;
     height: 650px;
     width: 580px;
-    /* background-color: rgb(191, 155, 225); */
     position: absolute;
     z-index: 0;
 }
@@ -167,23 +176,18 @@ button:hover{
     margin: 0px 20px 0px 20px;
     height: 650px;
     width: 580px;
-    /* background-color: rgb(191, 155, 225); */
     position: absolute;
     z-index: 0;
 
 }
 .badWater{
-    /* visibility: hidden; */
     display: none;
-/* background-color: red; */
     background-image: url('images/badwater.png');
     z-index: 4;
     position: absolute;
     top: 574px;
     left: 20px;
     height: 200px;
-    /* background-image: url('bad_water4_1.png'); */
-
     background-repeat: repeat-x;
     animation: slideright 80s infinite linear;
     -webkit-animation: slideright 80s infinite linear;
@@ -196,8 +200,6 @@ button:hover{
     left: 20px;
     height: 200px;
     background-image: url('images/freshwater.png');
-    /* background-image: url('bad_water4_1.png'); */
-
     background-repeat: repeat-x;
     animation: slideright 80s infinite linear;
     -webkit-animation: slideright 80s infinite linear;
@@ -217,38 +219,21 @@ button:hover{
     top: 416px;
     left: 0px;
     z-index: 2;
-    /* background-color: black; */
-    /* top: 280px;
-    left: 30px; */
-
 }
 
 
-/* .finalScoreView{
-    display: none;
-    background-color: antiquewhite;
-    color: green;
-    z-index: 4;
-} */
+
 .finalScoreView{
-    /* background-image: url("images/cloud_1.png");
-    background-repeat: no-repeat;
-    background-size:contain;
-    height: 400px;
-    width: 800px; */
-    /* z-index: 100;
-    */
     text-align: center;
-    top: 38%;
-    left: 32%; 
+    top: 66%;
+    left: 36%; 
     position: absolute; 
-        z-index: 100;
-    /* background-image: url("images/cloud_1.png");
-    background-repeat: no-repeat;
-    background-size:contain;
-    height: 200px;
-    width: 400px;
-    position: absolute; */
+    z-index: 100;
+    color:rgb(249, 2, 117);
+
+}
+.pinktext{
+    color:rgb(249, 2, 117);
 
 }
 
@@ -257,11 +242,11 @@ button:hover{
     background-image: url("images/cloud_1.png");
     background-repeat: no-repeat;
     background-size:cover;
-    height: 380px;
-    width: 450px;
+    height: 396px;
+    width: 470px;
     position: absolute;
     /* position: fixed; */
-    top: 38%;
+    top: 35%;
     left: 50%;
     padding: 20px;
     transform: translate(-50%, -50%);
@@ -275,23 +260,44 @@ button:hover{
     padding: 8px;
     border-radius: 10px;
     padding: 4px 14px;
-    font-size: 30px;
+    font-size: 24px;
     font-weight:800;
   }
-  .showInstruction{
-    padding-top: 24%;
 
+  .firstMessage{
+    padding-top: 18%;
+    color:rgb(249, 2, 117);
+    font-size: 28px;
+    max-width: 380px;
+    padding-left: 50px;
   }
 
+  .showInstruction1{
+    display : none;
+  }
+
+  .showInstruction2{
+    display : none;
+  }
+.levelUpDetial{
+    padding-top: 4%;
+    max-width: 380px;
+    padding-left: 50px;
+
+}
+  .continueplay{
+    display : none;
+
+  }
   .showInLevel2{
     display : none;
-    padding-top: 8%;
-    
   }
-  .playAgainButton{
-    padding-top: 10%;
-    /* top: 58%; */
+
+  .showInLevel3{
+    display : none;
   }
+
+  
 
 
 @keyframes slideright {
@@ -314,135 +320,5 @@ button:hover{
 
 
 
-.grid {
-	width: 600px;
-    height: 150px;
-	/* height: 620px; */
-	/* border: solid black 1px; */
-	 display: flex;
-    justify-content: space-between;
-	flex-wrap: wrap;
-    position: absolute;
-    z-index: 1;
-    left: 20px;
-}
-
-.grid div {
-	width: 70px;
-	height: 80px;
-    border: solid 2px white;
-    
-    margin: 0px 0px;
-    padding:0;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-
-}
-
-.pollutant {
-    background-image: url('images/can_1.png');
-    border: solid 2px rgb(127, 133, 137);
-    background-position: center;
-
-	border-radius: 5px;
-}
-
-.pollutant2{
-    background-image: url('images/plastic_1.png');
-    border: solid 2px rgb(127, 133, 137);
-    background-position: center;
-
-	border-radius: 5px;
-} 
-
-/* .canMove2{
-    left: 90;
-    background-image: url('images/can_1.png');
-    /* background-color: brown; */
-    /* background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 80px;
-    width: 70px;
-    position: absolute;
-    z-index: 1;
-    margin-left: 20px;
-    border: solid 2px rgb(127, 133, 137);
-    border-radius: 5px;
-} */ 
-
-/* level-2
-width: 70px;
-height: 80px;
-background-image: url('images/plastic_1.png'); */ */
-
-
-
-/* 
-level-3
-background-image: url('images/bottle_1.png');
-width: 70px;
-height: 100px; */
-
-
-
-/* .square{
-    height: 100px;
-    width: 100px;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-/* .impureParticle{
-    background-image: url('can_1.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100px;
-    width: 100px;
-    position: relative;
-    z-index: 10;
-    left: 100px;
-    margin:0;
-    padding:0;
-} */
-
-/* 
-.bottleMove{
-    background-image: url('bottle_2.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 100px;
-    width: 100px;
-    position: absolute;
-    z-index: 10;
-    margin:0;
-    padding:0;
-}
-
-.plasticMove{
-    background-image: url('plastic_1.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100px;
-    width: 100px;
-    position: absolute;
-    z-index: 10;
-    left: 100px;
-    margin:0;
-    padding:0;
-
-}
-
-.canMove{
-    background-image: url('plastic_1.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100px;
-    width: 100px;
-    position: absolute;
-    z-index: 10;
-    left: 200px;
-} */
 
 
