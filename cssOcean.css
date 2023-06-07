@@ -131,30 +131,13 @@ button:hover{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 80px;
-    width: 70px;
+    height: 300px;
+    width: 400px;
     position: absolute;
-    z-index: 1;
+    z-index: 5;
     margin-left: 20px;
-    border: solid 1px rgb(127, 133, 137);
     border-radius: 5px;
 }
-
-.bottleMove {
-    background-image: url('images/bottle_2.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    height: 80px;
-    width: 70px;
-    position: absolute;
-    z-index: 1;
-    margin-left: 20px;
-    border: solid 1px rgb(127, 133, 137);
-    border-radius: 5px;
-}
-
-
 
 .skySpace{
     background-image: url('images/freshsky.jpg');
@@ -187,7 +170,7 @@ button:hover{
     position: absolute;
     top: 574px;
     left: 20px;
-    height: 200px;
+    height: 180px;
     background-repeat: repeat-x;
     animation: slideright 80s infinite linear;
     -webkit-animation: slideright 80s infinite linear;
@@ -198,7 +181,7 @@ button:hover{
     position: absolute;
     top: 574px;
     left: 20px;
-    height: 200px;
+    height: 180px;
     background-image: url('images/freshwater.png');
     background-repeat: repeat-x;
     animation: slideright 80s infinite linear;

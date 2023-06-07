@@ -44,7 +44,13 @@
 
           
             
-            <div class="startButton"><button>Start</button></div>
+            <div class="startButton" onmousedown="start.play()" class="btn"><button>Start</button></div>
+            
+
+
+
+            
+            
           </div>
         </div>
 
@@ -134,7 +140,10 @@
     <script src = "javascript/level3js.js"></script>
 
     <script src = "javascript/utility.js"></script>
-
+    <script>
+      var start = new Audio();
+      start.src = "start.mp3";
+    </script>
 
 
 </body>
